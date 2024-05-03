@@ -1,16 +1,40 @@
 <script lang="ts">
-  let roomcode: string = '';
+  let roomcode: string = "abc123";
 </script>
 
 <div class="main-page-content">
-  <h1 class="title"><span id="a">Svelte</span><span id="b">Kit</span><span id="c">!</span></h1>
+  <h1 class="title">
+    <span id="a">Tic </span>
+    <span id="b"> Tac </span>
+    <span id="c"> Toe</span>
+  </h1>
   <div class="options">
     <button class="newroom">New Room</button>
     <div class="seperator"></div>
     <div class="roominput">
-      <span>Enter Room Code:</span>
-      <input type="text" placeholder="#abc123" bind:value={roomcode} class="roomcode" />
-      <button>-></button>
+      <span class="roominputprompt">Enter Room Code:</span>
+      <div class="roomcode">
+        <input
+          type="text"
+          placeholder="#abc123"
+          bind:value={roomcode}
+          class="roomcodefield"
+        />
+        <img
+          src="icons/right-arrow.svg"
+          alt="submit"
+          class="roomcodesubmit"
+          on:click={() => alert("Room code: " + roomcode)}
+          on:keydown={(e) => {
+            if (e.key === "Enter") {
+              alert("Room code: " + roomcode);
+            }
+          }}
+          role="button"
+          tabindex="0"
+          aria-pressed="false"
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -21,21 +45,44 @@
     height: 90%;
     font-size: 1vw;
     display: flex;
-    flex-flow: column nowrap;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
-    border: 1px solid red;
   }
   .roomcode {
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .roominputprompt {
+    height: 40%;
+    font-size: 1.1vw;
+  }
+  .roomcodefield {
     font-size: 1.8vw;
-    width: 95%;
-    height: 30%;
+    width: 70%;
+    height: 60%;
     background: none;
     color: var(--text-color);
     border: none;
-    border-bottom: 0.15vw solid color-mix(in srgb, var(--text-color) 50%, transparent);
+    border-bottom: 0.15vw solid
+      color-mix(in srgb, var(--text-color) 50%, transparent);
+    align-self: center;
   }
-
+  .roomcodesubmit {
+    aspect-ratio: 1 / 1;
+    height: 2vw;
+    align-self: center;
+    margin: none;
+    padding: none;
+    -webkit-filter: invert(0.8);
+    filter: invert(0.8);
+    transition: 0.2s;
+  }
+  .roomcodesubmit:hover {
+    transform: scale(1.1);
+    -webkit-filter: invert(0.6);
+    filter: invert(0.6);
+  }
   .title {
     width: 70%;
     text-align: center;
@@ -57,7 +104,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 10vh;
+    height: 10vh;
   }
   .seperator {
     margin-left: 2%;
@@ -85,17 +132,17 @@
   }
   #a {
     opacity: 0;
-    animation: exist .75s ease-in-out forwards;
+    animation: exist 0.75s ease-in-out forwards;
     animation-delay: 1s;
   }
   #b {
     opacity: 0;
-    animation: exist .75s ease-in-out forwards;
+    animation: exist 0.75s ease-in-out forwards;
     animation-delay: 1.75s;
   }
   #c {
     opacity: 0;
-    animation: exist .75s ease-in-out forwards;
+    animation: exist 0.75s ease-in-out forwards;
     animation-delay: 2.5s;
   }
   @keyframes exist {
