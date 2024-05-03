@@ -1,0 +1,27 @@
+:root {
+  --bg-color: #37393A;
+  --text-color: #EEF4ED;
+  --color1: #60AFFF;
+  --color2: #E5446D;
+  --color3: #FF8966;
+}
+
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body, #svelte {
+  background-color: var(--bg-color);
+  font-family: "Montserrat", sans-serif;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  color: var(--text-color);
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
